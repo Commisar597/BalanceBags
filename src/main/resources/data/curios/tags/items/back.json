@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "balance_bags:backpack",
+    "balance_bags:duffel_bag",
+    "balance_bags:regular_bag"
+  ]
+}
