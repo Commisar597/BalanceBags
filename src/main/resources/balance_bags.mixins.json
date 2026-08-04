@@ -9,8 +9,7 @@
   ],
   "client": [
     "PlayerModelMixin",
-    "AbstractContainerScreenMixin",
-    "GuiMixin"
+    "AbstractContainerScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,7 +1,6 @@
 package org.Aei.balance_bags.network;
 
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import org.Aei.balance_bags.BalanceBags;
@@ -14,17 +13,6 @@ public class PacketHandler {
             PROTOCOL_VERSION::equals,
             PROTOCOL_VERSION::equals
     );
-
-    public static void register() {
-        int id = 0;
-
-        // Пакет выбора активного слота подсумка (колесико / хоткеи)
-        INSTANCE.messageBuilder(ServerboundSelectPouchSlotPacket.class, id++, NetworkDirection.PLAY_TO_SERVER)
-                .decoder(ServerboundSelectPouchSlotPacket::new)
-                .encoder(ServerboundSelectPouchSlotPacket::encode)
-                .consumerMainThread(ServerboundSelectPouchSlotPacket::handle)
-                .add();
-    }
 
     public static void sendToServer(Object message) {
         INSTANCE.sendToServer(message);

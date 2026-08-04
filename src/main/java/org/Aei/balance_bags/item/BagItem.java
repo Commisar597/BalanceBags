@@ -14,6 +14,7 @@ import org.Aei.balance_bags.BalanceBags;
 import org.Aei.balance_bags.inventory.BagInventoryHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.curios.api.CuriosApi;
 import top.theillusivec4.curios.api.SlotContext;
 import top.theillusivec4.curios.api.type.capability.ICurio.SoundInfo;
 import top.theillusivec4.curios.api.type.capability.ICurioItem;
@@ -39,6 +40,21 @@ public class BagItem extends Item implements ICurioItem {
 
     @Override
     public boolean canEquipFromUse(SlotContext slotContext, ItemStack stack) {
+        return canEquip(slotContext, stack);
+    }
+
+    // --- Ограничение: Запрещаем надевать дубликаты одного типа сумки ---
+    @Override
+    public boolean canEquip(SlotContext slotContext, ItemStack stack) {
+        // Проверяем, есть ли у игрока УЖЕ надетая сумка ТАКОГО ЖЕ типа
+        var foundCurio = CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), stack.getItem());
+
+        // Если предмет найден в слотах Curios, разрешаем экипировку только в том случае,
+        // если это Т ТА ЖЕ САМАЯ стопка (например, при смене слота в GUI Curios)
+        if (foundCurio.isPresent()) {
+            return foundCurio.get().stack() == stack;
+        }
+
         return true;
     }
 

@@ -20,7 +20,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.Aei.balance_bags.item.BagItem;
-import org.Aei.balance_bags.network.PacketHandler;
 import org.slf4j.Logger;
 import top.theillusivec4.curios.api.SlotTypePreset;
 
@@ -77,9 +76,6 @@ public class BalanceBags {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-        // Регистрируем пакеты во время общеинициализационного этапа
-        event.enqueueWork(PacketHandler::register);
-
         LOGGER.info("Balance Bags common setup initialized.");
     }
 

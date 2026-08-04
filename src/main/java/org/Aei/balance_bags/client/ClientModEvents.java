@@ -26,14 +26,6 @@ public class ClientModEvents {
     }
 
     @SubscribeEvent
-    public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
-        event.register(ModKeyMappings.POUCH_SLOT_1);
-        event.register(ModKeyMappings.POUCH_SLOT_2);
-        event.register(ModKeyMappings.POUCH_SLOT_3);
-        event.register(ModKeyMappings.USE_POUCH_ITEM);
-    }
-
-    @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         // Оборачиваем в enqueueWork для безопасного выполнения в потоке клиента
         event.enqueueWork(() -> {

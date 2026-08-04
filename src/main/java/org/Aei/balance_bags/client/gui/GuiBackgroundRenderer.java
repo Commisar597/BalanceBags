@@ -41,7 +41,7 @@ public class GuiBackgroundRenderer {
 
         // 2. Сумка (3x4) — Справа вверху [Опущена на 15px + зазор 4px справа]
         if (CuriosApi.getCuriosHelper().findFirstCurio(player, BalanceBags.REGULAR_BAG.get()).isPresent()) {
-            graphics.blit(REGULAR_BAG_TEXTURE, guiLeft + 180, guiTop + 15, 0, 0, 68, 94, 68, 94);
+            graphics.blit(REGULAR_BAG_TEXTURE, guiLeft + 180, guiTop + 15, 0, 0, 70, 86, 70, 86);
         }
 
         // 3. Подсумок (3x1) — Справа внизу [Опущен на 15px (110 + 15 = 125) + зазор 4px справа]
@@ -51,7 +51,7 @@ public class GuiBackgroundRenderer {
 
         // 4. Большая сумка (3x9) — Снизу [Сдвинута вниз на 4px для зазора]
         if (CuriosApi.getCuriosHelper().findFirstCurio(player, BalanceBags.DUFFEL_BAG.get()).isPresent()) {
-            graphics.blit(DUFFEL_BAG_TEXTURE, guiLeft, guiTop + 170, 0, 0, 176, 76, 176, 76);
+            graphics.blit(DUFFEL_BAG_TEXTURE, guiLeft, guiTop + 170, 0, 0, 176, 82, 176, 82);
         }
 
         RenderSystem.disableBlend();
