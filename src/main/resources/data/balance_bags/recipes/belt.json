@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "sWs",
+    "sWs",
+    "sWs"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:string"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "result": {
+    "item": "balance_bags:belt",
+    "count": 1
+  }
+}

@@ -4,5 +4,13 @@
   "item.balance_bags.regular_bag": "Сумка через плечо",
   "item.balance_bags.pouch": "Подсумок",
 
+  "item.balance_bags.drawstring": "Завязочка",
+  "item.balance_bags.pocket": "Кармашек",
+  "item.balance_bags.sack": "Мешочек",
+  "item.balance_bags.small_strap": "Ремешок",
+  "item.balance_bags.strap": "Ремень",
+  "item.balance_bags.big_strap": "Длинный Ремень",
+  "item.balance_bags.belt": "Лента",
+
   "creativetab.balance_bags_tab": "Balance Bags"
 }

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ds ",
+    "ld ",
+    " p "
+  ],
+  "key": {
+    "d": {
+      "item": "balance_bags:drawstring"
+    },
+    "s": {
+      "item": "balance_bags:strap"
+    },
+    "l": {
+      "item": "balance_bags:small_strap"
+    },
+    "p": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "balance_bags:regular_bag",
+    "count": 1
+  }
+}

@@ -4,5 +4,13 @@
   "item.balance_bags.regular_bag": "Regular Bag",
   "item.balance_bags.pouch": "Pouch",
 
+  "item.balance_bags.drawstring": "Drawstring",
+  "item.balance_bags.pocket": "Pocket",
+  "item.balance_bags.sack": "Sack",
+  "item.balance_bags.small_strap": "Small Strap",
+  "item.balance_bags.strap": "Strap",
+  "item.balance_bags.big_strap": "Big Strap",
+  "item.balance_bags.belt": "Belt",
+
   "creativetab.balance_bags_tab": "Balance Bags"
 }

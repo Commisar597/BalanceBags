@@ -1,0 +1,16 @@
+{
+  "type": "balance_bags:belt_cutting",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "balance_bags:belt"
+    },
+    {
+      "item": "minecraft:shears"
+    }
+  ],
+  "result": {
+    "item": "balance_bags:drawstring",
+    "count": 3
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " s ",
+    "dld",
+    "bmb"
+  ],
+  "key": {
+    "s": {
+      "item": "balance_bags:strap"
+    },
+    "d": {
+      "item": "balance_bags:drawstring"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "b": {
+      "item": "balance_bags:small_strap"
+    },
+    "m": {
+      "item": "balance_bags:pouch"
+    }
+  },
+  "result": {
+    "item": "balance_bags:duffel_bag",
+    "count": 1
+  }
+}

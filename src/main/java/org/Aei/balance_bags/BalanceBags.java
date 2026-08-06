@@ -22,6 +22,12 @@ import net.minecraftforge.registries.RegistryObject;
 import org.Aei.balance_bags.item.BagItem;
 import org.slf4j.Logger;
 import top.theillusivec4.curios.api.SlotTypePreset;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.SimpleCraftingRecipeSerializer;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+import org.Aei.balance_bags.crafting.BeltCuttingRecipe;
 
 @Mod(BalanceBags.MOD_ID)
 public class BalanceBags {
@@ -29,15 +35,12 @@ public class BalanceBags {
     public static final String MOD_ID = "balance_bags";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    // 1. Реестр предметов
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, MOD_ID);
 
-    // 2. Реестр вкладок в Creative-инвентаре
     public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MOD_ID);
 
-    // --- Регистрация сумок ---
     public static final RegistryObject<Item> BACKPACK = ITEMS.register("backpack",
             () -> new BagItem(new Item.Properties()));
 
@@ -50,7 +53,33 @@ public class BalanceBags {
     public static final RegistryObject<Item> POUCH = ITEMS.register("pouch",
             () -> new BagItem(new Item.Properties()));
 
-    // --- Регистрация вкладки в креативе ---
+    public static final RegistryObject<Item> DRAWSTRING = ITEMS.register("drawstring",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> POCKET = ITEMS.register("pocket",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SACK = ITEMS.register("sack",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SMALL_STRAP = ITEMS.register("small_strap",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> STRAP = ITEMS.register("strap",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BIG_STRAP = ITEMS.register("big_strap",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BELT = ITEMS.register("belt",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS =
+            DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, "balance_bags");
+
+    public static final RegistryObject<RecipeSerializer<BeltCuttingRecipe>> BELT_CUTTING_SERIALIZER =
+            RECIPE_SERIALIZERS.register("belt_cutting", () -> new SimpleCraftingRecipeSerializer<>(BeltCuttingRecipe::new));
+
     public static final RegistryObject<CreativeModeTab> BALANCE_BAGS_TAB = CREATIVE_MODE_TABS.register("balance_bags_tab",
             () -> CreativeModeTab.builder()
                     .icon(() -> new ItemStack(BACKPACK.get()))
@@ -60,6 +89,13 @@ public class BalanceBags {
                         output.accept(DUFFEL_BAG.get());
                         output.accept(REGULAR_BAG.get());
                         output.accept(POUCH.get());
+                        output.accept(DRAWSTRING.get());
+                        output.accept(POCKET.get());
+                        output.accept(SACK.get());
+                        output.accept(SMALL_STRAP.get());
+                        output.accept(STRAP.get());
+                        output.accept(BIG_STRAP.get());
+                        output.accept(BELT.get());
                     })
                     .build());
 
@@ -68,6 +104,7 @@ public class BalanceBags {
 
         ITEMS.register(modEventBus);
         CREATIVE_MODE_TABS.register(modEventBus);
+        RECIPE_SERIALIZERS.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::enqueueIMC);

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "sds",
+    "p_p",
+    "mmm"
+  ],
+  "key": {
+    "s": {
+      "item": "balance_bags:strap"
+    },
+    "d": {
+      "item": "balance_bags:drawstring"
+    },
+    "p": {
+      "item": "minecraft:leather"
+    },
+    "_": {
+      "item": "balance_bags:pocket"
+    },
+    "m": {
+      "item": "balance_bags:pouch"
+    }
+  },
+  "result": {
+    "item": "balance_bags:backpack",
+    "count": 1
+  }
+}

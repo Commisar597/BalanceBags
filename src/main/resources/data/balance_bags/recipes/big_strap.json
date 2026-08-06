@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " s ",
+    "lSl",
+    " s "
+  ],
+  "key": {
+    "s": {
+      "item": "balance_bags:strap"
+    },
+    "l": {
+      "item": "minecraft:string"
+    },
+    "S": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "balance_bags:big_strap",
+    "count": 1
+  }
+}
