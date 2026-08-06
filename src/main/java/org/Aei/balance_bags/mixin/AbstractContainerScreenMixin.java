@@ -14,7 +14,11 @@ import top.theillusivec4.curios.api.CuriosApi;
 @Mixin(AbstractContainerScreen.class)
 public abstract class AbstractContainerScreenMixin {
 
-    @Inject(method = "renderSlot", at = @At("TAIL"))
+    @Inject(
+            method = "renderSlot(Lnet/minecraft/client/gui/GuiGraphics;Lnet/minecraft/world/inventory/Slot;)V",
+            at = @At("TAIL"),
+            require = 0
+    )
     private void renderDisabledOffhandOverlay(GuiGraphics graphics, Slot slot, CallbackInfo ci) {
         if (slot.container instanceof Inventory inventory) {
             if (slot.getContainerSlot() == Inventory.SLOT_OFFHAND) {

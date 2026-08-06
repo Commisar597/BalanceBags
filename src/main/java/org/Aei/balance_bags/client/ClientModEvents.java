@@ -1,11 +1,9 @@
 package org.Aei.balance_bags.client;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -27,27 +25,26 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        // Оборачиваем в enqueueWork для безопасного выполнения в потоке клиента
         event.enqueueWork(() -> {
-            EntityModelSet entityModels = Minecraft.getInstance().getEntityModels();
-
+            // Вызов bakeLayer происходит внутри лямбды () -> new BagCurioRenderer(...),
+            // то есть ТОЛЬКО в момент первого рендера, когда Minecraft уже полностью инициализирован.
             CuriosRendererRegistry.register(BalanceBags.POUCH.get(), () -> new BagCurioRenderer(
-                    new PouchModel<>(entityModels.bakeLayer(PouchModel.LAYER_LOCATION)),
+                    new PouchModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(PouchModel.LAYER_LOCATION)),
                     new ResourceLocation(BalanceBags.MOD_ID, "textures/entity/pouch.png")
             ));
 
             CuriosRendererRegistry.register(BalanceBags.REGULAR_BAG.get(), () -> new BagCurioRenderer(
-                    new RegularBagModel<>(entityModels.bakeLayer(RegularBagModel.LAYER_LOCATION)),
+                    new RegularBagModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(RegularBagModel.LAYER_LOCATION)),
                     new ResourceLocation(BalanceBags.MOD_ID, "textures/entity/regular_bag.png")
             ));
 
             CuriosRendererRegistry.register(BalanceBags.DUFFEL_BAG.get(), () -> new BagCurioRenderer(
-                    new DuffelBagModel<>(entityModels.bakeLayer(DuffelBagModel.LAYER_LOCATION)),
+                    new DuffelBagModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(DuffelBagModel.LAYER_LOCATION)),
                     new ResourceLocation(BalanceBags.MOD_ID, "textures/entity/duffel_bag.png")
             ));
 
             CuriosRendererRegistry.register(BalanceBags.BACKPACK.get(), () -> new BagCurioRenderer(
-                    new BackpackModel<>(entityModels.bakeLayer(BackpackModel.LAYER_LOCATION)),
+                    new BackpackModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(BackpackModel.LAYER_LOCATION)),
                     new ResourceLocation(BalanceBags.MOD_ID, "textures/entity/backpack.png")
             ));
         });

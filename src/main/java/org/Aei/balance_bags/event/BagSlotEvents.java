@@ -10,31 +10,25 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.Aei.balance_bags.BalanceBags;
 import org.Aei.balance_bags.inventory.BagSlotManager;
-import top.theillusivec4.curios.api.event.CurioChangeEvent;
 
 @Mod.EventBusSubscriber(modid = BalanceBags.MOD_ID)
 public class BagSlotEvents {
 
-    // 1. Обновляем слоты на сервере при экипировке/снятии сумок в Curios
-    @SubscribeEvent
-    public static void onCurioChange(CurioChangeEvent event) {
-        if (event.getEntity() instanceof Player player) {
-            BagSlotManager.updateBagSlots(player, player.inventoryMenu);
-        }
-    }
-
-    // 2. Обновляем слоты при входе игрока и респавне
+    // 1. Инициализируем слоты сумок при входе игрока в мир
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
-        BagSlotManager.updateBagSlots(event.getEntity(), event.getEntity().inventoryMenu);
+        Player player = (Player) event.getEntity();
+        BagSlotManager.initBagSlots(player, player.inventoryMenu);
     }
 
+    // 2. Инициализируем слоты при респавне игрока
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
-        BagSlotManager.updateBagSlots(event.getEntity(), event.getEntity().inventoryMenu);
+        Player player = (Player) event.getEntity();
+        BagSlotManager.initBagSlots(player, player.inventoryMenu);
     }
 
-    // 3. Клиентская синхронизация слотов при открытии GUI инвентаря
+    // 3. Инициализируем слоты при открытии GUI инвентаря на клиенте
     @Mod.EventBusSubscriber(modid = BalanceBags.MOD_ID, value = Dist.CLIENT)
     public static class ClientEvents {
         @SubscribeEvent
@@ -42,7 +36,7 @@ public class BagSlotEvents {
             if (event.getScreen() instanceof InventoryScreen screen) {
                 Player player = Minecraft.getInstance().player;
                 if (player != null) {
-                    BagSlotManager.updateBagSlots(player, screen.getMenu());
+                    BagSlotManager.initBagSlots(player, screen.getMenu());
                 }
             }
         }
