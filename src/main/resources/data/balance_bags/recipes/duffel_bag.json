@@ -8,7 +8,7 @@
   ],
   "key": {
     "s": {
-      "item": "balance_bags:strap"
+      "item": "balance_bags:big_strap"
     },
     "d": {
       "item": "balance_bags:drawstring"
@@ -17,10 +17,10 @@
       "item": "minecraft:leather"
     },
     "b": {
-      "item": "balance_bags:small_strap"
+      "item": "balance_bags:sack"
     },
     "m": {
-      "item": "balance_bags:pouch"
+      "item": "minecraft:string"
     }
   },
   "result": {

@@ -4,7 +4,7 @@
   "pattern": [
     "sds",
     "p_p",
-    "mmm"
+    "mnm"
   ],
   "key": {
     "s": {
@@ -14,13 +14,16 @@
       "item": "balance_bags:drawstring"
     },
     "p": {
-      "item": "minecraft:leather"
+      "item": "minecraft:string"
     },
     "_": {
-      "item": "balance_bags:pocket"
+      "item": "minecraft:leather"
     },
     "m": {
-      "item": "balance_bags:pouch"
+      "item": "balance_bags:pocket"
+    },
+    "n": {
+      "item": "balance_bags:sack"
     }
   },
   "result": {
