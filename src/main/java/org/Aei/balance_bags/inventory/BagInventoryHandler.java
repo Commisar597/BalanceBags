@@ -107,7 +107,6 @@ public class BagInventoryHandler extends ItemStackHandler {
             if (tag != null && tag.contains("Inventory")) {
                 deserializeNBT(tag.getCompound("Inventory"));
             } else {
-                // Если тега инвентаря еще нет, очищаем локальный буфер хендлера
                 for (int i = 0; i < stacks.size(); i++) {
                     stacks.set(i, ItemStack.EMPTY);
                 }
