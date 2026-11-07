@@ -26,8 +26,6 @@ public class ClientModEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            // Вызов bakeLayer происходит внутри лямбды () -> new BagCurioRenderer(...),
-            // то есть ТОЛЬКО в момент первого рендера, когда Minecraft уже полностью инициализирован.
             CuriosRendererRegistry.register(BalanceBags.POUCH.get(), () -> new BagCurioRenderer(
                     new PouchModel<>(Minecraft.getInstance().getEntityModels().bakeLayer(PouchModel.LAYER_LOCATION)),
                     new ResourceLocation(BalanceBags.MOD_ID, "textures/entity/pouch.png")
