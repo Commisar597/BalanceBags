@@ -14,21 +14,18 @@ import org.Aei.balance_bags.inventory.BagSlotManager;
 @Mod.EventBusSubscriber(modid = BalanceBags.MOD_ID)
 public class BagSlotEvents {
 
-    // 1. Инициализируем слоты сумок при входе игрока в мир
     @SubscribeEvent
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         Player player = (Player) event.getEntity();
         BagSlotManager.initBagSlots(player, player.inventoryMenu);
     }
 
-    // 2. Инициализируем слоты при респавне игрока
     @SubscribeEvent
     public static void onPlayerRespawn(PlayerEvent.PlayerRespawnEvent event) {
         Player player = (Player) event.getEntity();
         BagSlotManager.initBagSlots(player, player.inventoryMenu);
     }
-
-    // 3. Инициализируем слоты при открытии GUI инвентаря на клиенте
+    
     @Mod.EventBusSubscriber(modid = BalanceBags.MOD_ID, value = Dist.CLIENT)
     public static class ClientEvents {
         @SubscribeEvent
