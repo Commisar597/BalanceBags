@@ -12,7 +12,6 @@ import net.minecraft.world.item.crafting.ShapelessRecipe;
 
 public class BeltCuttingRecipe extends ShapelessRecipe {
 
-    // Оставляем стандартный конструктор, который ожидает сериализатор
     public BeltCuttingRecipe(ResourceLocation id, CraftingBookCategory category) {
         super(id, "", category, new ItemStack(org.Aei.balance_bags.BalanceBags.DRAWSTRING.get(), 3),
                 NonNullList.of(Ingredient.EMPTY,
