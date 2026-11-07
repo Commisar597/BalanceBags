@@ -36,7 +36,7 @@ public class PouchModel<T extends LivingEntity> extends EntityModel<T> {
                         .texOffs(0, 29).addBox(-6.7F, -9.8F, -0.3F, 1.0F, 1.0F, 2.0F, new CubeDeformation(0.0F))
                         .texOffs(0, 16).addBox(-6.7F, -9.8F, -1.7F, 1.0F, 1.0F, 2.0F, new CubeDeformation(0.0F))
                         .texOffs(6, 23).addBox(-6.4F, -10.3F, -0.5F, 1.0F, 2.0F, 1.0F, new CubeDeformation(0.0F)),
-                PartPose.offset(2.0F, 0.0F, 0.0F)); // 👈 Корректировка позиции по оси X
+                PartPose.offset(2.0F, 0.0F, 0.0F));
 
         return LayerDefinition.create(meshdefinition, 32, 32);
     }
