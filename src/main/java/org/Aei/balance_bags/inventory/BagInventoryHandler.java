@@ -13,14 +13,12 @@ public class BagInventoryHandler extends ItemStackHandler {
     private final Player player;
     private final Supplier<Item> bagItemSupplier;
 
-    // Конструктор для динамического поиска через Curios (основной)
     public BagInventoryHandler(Player player, Supplier<Item> bagItemSupplier, int size) {
         super(size);
         this.player = player;
         this.bagItemSupplier = bagItemSupplier;
     }
 
-    // Запасной конструктор (если где-то еще используется со статичным ItemStack)
     public BagInventoryHandler(ItemStack staticStack, int size) {
         super(size);
         this.player = null;
@@ -33,9 +31,6 @@ public class BagInventoryHandler extends ItemStackHandler {
         }
     }
 
-    /**
-     * Динамически находит актуальный ItemStack сумки в слотах Curios игрока.
-     */
     private ItemStack getBagStack() {
         if (player == null || bagItemSupplier == null) return ItemStack.EMPTY;
         return CuriosApi.getCuriosHelper()
@@ -43,8 +38,6 @@ public class BagInventoryHandler extends ItemStackHandler {
                 .map(slotResult -> slotResult.stack())
                 .orElse(ItemStack.EMPTY);
     }
-
-    // Перехватываем методы ItemStackHandler, чтобы работать с актуальным инвентарем из NBT надетой сумки
 
     @Override
     public int getSlots() {
@@ -107,9 +100,6 @@ public class BagInventoryHandler extends ItemStackHandler {
         saveToBag();
     }
 
-    /**
-     * Загружает инвентарь из NBT текущего надетого предмета
-     */
     private void loadFromBag() {
         ItemStack bag = getBagStack();
         if (!bag.isEmpty()) {
@@ -125,9 +115,6 @@ public class BagInventoryHandler extends ItemStackHandler {
         }
     }
 
-    /**
-     * Сохраняет текущий инвентарь обратно в NBT надетого предмета
-     */
     public void saveToBag() {
         ItemStack bag = getBagStack();
         if (!bag.isEmpty()) {
