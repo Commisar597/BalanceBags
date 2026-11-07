@@ -25,11 +25,8 @@ public class PouchModel<T extends LivingEntity> extends EntityModel<T> {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        // Точка привязки к бедру игрока
         PartDefinition rightLeg = partdefinition.addOrReplaceChild("rightLeg", CubeListBuilder.create(), PartPose.offset(0.0F, 12.0F, 0.0F));
 
-        // 💡 Вторая точка PartPose.offset отвечает за точное положение подсумка относительно бедра:
-        // (X: влево/вправо, Y: вверх/вниз, Z: вперед/назад)
         rightLeg.addOrReplaceChild("pouch", CubeListBuilder.create()
                         .texOffs(0, 0).addBox(-4.5F, -10.0F, -2.5F, 5.0F, 2.0F, 5.0F, new CubeDeformation(0.0F))
                         .texOffs(0, 7).addBox(-6.0F, -11.0F, -1.5F, 2.0F, 4.0F, 3.0F, new CubeDeformation(0.0F))
