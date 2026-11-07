@@ -18,7 +18,6 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = BalanceBags.MOD_ID)
 public class BagEffectsHandler {
 
-    // Генерируем валидный и уникальный UUID для модификатора скорости
     private static final UUID SLOWDOWN_UUID = UUID.nameUUIDFromBytes("balance_bags:slowdown".getBytes());
 
     @SubscribeEvent
@@ -26,7 +25,6 @@ public class BagEffectsHandler {
         if (event.phase != TickEvent.Phase.END) return;
         Player player = event.player;
 
-        // Выполняем просчет только на стороне сервера
         if (player.level().isClientSide()) return;
 
         AttributeInstance speedAttr = player.getAttribute(Attributes.MOVEMENT_SPEED);
@@ -34,7 +32,6 @@ public class BagEffectsHandler {
 
         float totalSlowdown = 0.0F;
 
-        // 1. Проверка Большой сумки (27 слотов) — если полностью заполнена (-25%)
         var duffelOpt = CuriosApi.getCuriosHelper().findFirstCurio(player, BalanceBags.DUFFEL_BAG.get());
         if (duffelOpt.isPresent()) {
             BagInventoryHandler handler = new BagInventoryHandler(duffelOpt.get().stack(), 27);
@@ -43,7 +40,6 @@ public class BagEffectsHandler {
             }
         }
 
-        // 2. Проверка Рюкзака (18 слотов) — если полностью заполнен при беге (-15%)
         if (player.isSprinting()) {
             var backpackOpt = CuriosApi.getCuriosHelper().findFirstCurio(player, BalanceBags.BACKPACK.get());
             if (backpackOpt.isPresent()) {
@@ -54,11 +50,9 @@ public class BagEffectsHandler {
             }
         }
 
-        // 3. Управление модификатором скорости
         AttributeModifier currentModifier = speedAttr.getModifier(SLOWDOWN_UUID);
 
         if (totalSlowdown < 0.0F) {
-            // Если штраф изменился (например, суммировались две сумки), пересоздаем модификатор
             if (currentModifier != null && currentModifier.getAmount() != totalSlowdown) {
                 speedAttr.removeModifier(SLOWDOWN_UUID);
                 currentModifier = null;
@@ -73,20 +67,18 @@ public class BagEffectsHandler {
                 ));
             }
         } else {
-            // Если штрафов нет — удаляем модификатор
             if (currentModifier != null) {
                 speedAttr.removeModifier(SLOWDOWN_UUID);
             }
         }
     }
 
-    // 4. Блокировка Левой руки при надетой Большой сумке (Duffel Bag)
     @SubscribeEvent
     public static void onRightClickOffhand(PlayerInteractEvent.RightClickItem event) {
         if (event.getHand() == InteractionHand.OFF_HAND) {
             boolean hasDuffel = CuriosApi.getCuriosHelper().findFirstCurio(event.getEntity(), BalanceBags.DUFFEL_BAG.get()).isPresent();
             if (hasDuffel) {
-                event.setCanceled(true); // Запрещаем использовать предмет в левой руке
+                event.setCanceled(true);
             }
         }
     }
