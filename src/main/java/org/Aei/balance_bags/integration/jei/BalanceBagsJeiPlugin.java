@@ -18,7 +18,5 @@ public class BalanceBagsJeiPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        // Стандартные рецепты (крафты рюкзаков, подсумков и нарезка ремня ножницами)
-        // JEI подтягивает автоматически из ванильного менеджера рецептов.
     }
 }
