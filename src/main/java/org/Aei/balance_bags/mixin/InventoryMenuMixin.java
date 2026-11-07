@@ -29,7 +29,6 @@ public abstract class InventoryMenuMixin extends RecipeBookMenu {
         ItemStack stackInSlot = slot.getItem();
         ItemStack originalStack = stackInSlot.copy();
 
-        // 1. Быстрый перенос ИЗ слота сумки В инвентарь игрока
         if (slot instanceof BagSlot) {
             if (!this.moveItemStackTo(stackInSlot, 9, 36, false)) { // Главный инвентарь
                 if (!this.moveItemStackTo(stackInSlot, 0, 9, false)) { // Хотбар
@@ -47,7 +46,6 @@ public abstract class InventoryMenuMixin extends RecipeBookMenu {
             return;
         }
 
-        // 2. Быстрый перенос ИЗ инвентаря игрока В слоты сумок
         if (index >= 0 && index < 36) {
             int firstBagSlotIndex = -1;
             for (int i = 46; i < menu.slots.size(); i++) {

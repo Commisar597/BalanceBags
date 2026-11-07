@@ -30,7 +30,6 @@ public abstract class AbstractContainerScreenMixin {
                     int x = slot.x;
                     int y = slot.y;
 
-                    // Полупрозрачный темно-серый фоновый оверлей поверх слота щита/второй руки
                     graphics.fill(x, y, x + 16, y + 16, 0xCC111111);
                 }
             }

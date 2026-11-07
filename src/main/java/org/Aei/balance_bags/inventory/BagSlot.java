@@ -30,7 +30,6 @@ public class BagSlot extends SlotItemHandler {
 
     @Override
     public boolean isActive() {
-        // Слот активен (виден и доступен) только если у игрока надет соответствующий Curio
         if (player == null || bagItemSupplier.get() == null) {
             return false;
         }

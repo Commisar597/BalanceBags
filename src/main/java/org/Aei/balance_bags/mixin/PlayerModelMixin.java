@@ -31,19 +31,16 @@ public abstract class PlayerModelMixin<T extends LivingEntity> extends HumanoidM
                     .isPresent();
 
             if (hasDuffelBag) {
-                float lockedX = -0.62F; // Наклон руки вперёд
-                float lockedY = 0.12F; // Поворот кисти
-                float lockedZ = -0.42F; // Отведение руки вбок от тела (~12.5°)
+                float lockedX = -0.62F;
+                float lockedY = 0.12F;
+                float lockedZ = -0.42F;
 
-                // Применяем параметры к базовому слою
                 this.leftArm.xRot = lockedX;
                 this.leftArm.yRot = lockedY;
                 this.leftArm.zRot = lockedZ;
 
-                // Синхронизируем второй слой (рукав)
                 this.leftSleeve.copyFrom(this.leftArm);
 
-                // Коррекция наклона на Shift
                 if (this.crouching) {
                     this.leftArm.xRot -= 0.2F;
                     this.leftSleeve.xRot -= 0.2F;

@@ -43,14 +43,10 @@ public class BagItem extends Item implements ICurioItem {
         return canEquip(slotContext, stack);
     }
 
-    // --- Ограничение: Запрещаем надевать дубликаты одного типа сумки ---
     @Override
     public boolean canEquip(SlotContext slotContext, ItemStack stack) {
-        // Проверяем, есть ли у игрока УЖЕ надетая сумка ТАКОГО ЖЕ типа
         var foundCurio = CuriosApi.getCuriosHelper().findFirstCurio(slotContext.entity(), stack.getItem());
 
-        // Если предмет найден в слотах Curios, разрешаем экипировку только в том случае,
-        // если это Т ТА ЖЕ САМАЯ стопка (например, при смене слота в GUI Curios)
         if (foundCurio.isPresent()) {
             return foundCurio.get().stack() == stack;
         }

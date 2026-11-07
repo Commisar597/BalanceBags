@@ -116,17 +116,13 @@ public class BalanceBags {
         LOGGER.info("Balance Bags common setup initialized.");
     }
 
-    // --- Регистрация слотов Curios через IMC ---
     private void enqueueIMC(final InterModEnqueueEvent event) {
-        // Слот Спины (Back)
         InterModComms.sendTo("curios", "register_type",
                 () -> SlotTypePreset.BACK.getMessageBuilder().build());
 
-        // Слот Пояса (Belt)
         InterModComms.sendTo("curios", "register_type",
                 () -> SlotTypePreset.BELT.getMessageBuilder().build());
 
-        // 2 слота Аксессуара (Curio) под подсумок
         InterModComms.sendTo("curios", "register_type",
                 () -> SlotTypePreset.CURIO.getMessageBuilder().size(2).build());
     }

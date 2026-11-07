@@ -24,7 +24,6 @@ public class OffhandLockHandler {
             if (hasDuffelBag) {
                 ItemStack offhandStack = player.getOffhandItem();
                 if (!offhandStack.isEmpty()) {
-                    // Переносим предмет из левой руки в основной инвентарь или выбрасываем
                     if (!player.getInventory().add(offhandStack)) {
                         player.drop(offhandStack, false);
                     }
