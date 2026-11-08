@@ -28,7 +28,6 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
 
-            // Включаем Mixin файл при запуске игры из IDE (runClient/runServer)
             arg "-mixin.config=${mod_id}.mixins.json"
 
             mods {
@@ -58,7 +57,6 @@ minecraft {
     }
 }
 
-// Настройка Mixin плагина для генерации refmap и связывания с модом
 mixin {
     add sourceSets.main, "${mod_id}.refmap.json"
     config "${mod_id}.mixins.json"

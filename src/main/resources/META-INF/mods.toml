@@ -26,7 +26,6 @@ versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
 
-# Обязательная зависимость от Curios API
 [[dependencies."${mod_id}"]]
 modId="curios"
 mandatory=true
